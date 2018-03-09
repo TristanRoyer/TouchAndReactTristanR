@@ -35,11 +35,9 @@ checkMark.x = display.contentWidth/3
 checkMark.y = display.contentHeight/2
 checkMark.isVisible = false
 
--- Load two audio streams and one sound
-local laserSound = audio.loadSound( "Correct Answer Sound Effect.mp3" )
-
-local laserChannel = audio.play( laserSound )
-
+-- locals for sound
+local correctSound = audio.loadSound("Sounds/Correct Answer Sound Effect.mp3")
+local correctSoundChannel
 
 -- Function: BlueButtonListener
 -- Input: touch listener
@@ -52,7 +50,7 @@ local function BlueButtonListener(touch)
     	redButton.isVisible = true
     	textObject.isVisible = true
     	checkMark.isVisible = true
-     
+        correctSoundChannel = audio.play(correctSound)
     end
 
     if (touch.phase == "ended") then
@@ -89,17 +87,6 @@ local function RedButtonListener(touch)
      
 end
 
--- Completion listener function
-local function narrationFinished( event )
-    print( "Narration Finished on channel", event.channel )
-    if ( event.completed ) then
-        print( "Narration completed playback naturally" )
-    else
-        print( "Narration was stopped before completion" )
-    end
-end
- 
-
  
 
 
@@ -108,5 +95,4 @@ blueButton:addEventListener("touch",BlueButtonListener)
 
 redButton:addEventListener("touch",RedButtonListener)
 
-narrationFinished:addEventListener("eventFrame",narrationFinished)
 
