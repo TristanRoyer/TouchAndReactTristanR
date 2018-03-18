@@ -5,7 +5,7 @@
 -- turns another colour and displays text and another object.
 
 -- set background colour
-display.setDefault ("background", 153/255, 204/255, 255/255)
+display.setDefault ("background", 250/255, 200/255, 80/255)
 
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
@@ -26,7 +26,7 @@ redButton.isVisible = false
 local textObject = display.newText ("Clicked!",0, 0, nil, 50)
 textObject.x = display.contentWidth/2
 textObject.y = display.contentHeight/3
-textObject:setTextColor (1, 1, 0)
+textObject:setTextColor (1, 0, 1)
 textObject.isVisible = false
 
 --create the Check mark, set its position and make it invisible
